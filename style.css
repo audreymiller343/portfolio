@@ -3,6 +3,7 @@ html {
     font: 100%/1.5 system-ui;
     --color-accent: oklch(65% 50% 0);
     accent-color: var(--color-accent);
+    color-scheme: light dark;
 }
 
 body {
@@ -11,16 +12,16 @@ body {
     padding-inline: 1em;
 }
 
-
 nav ul,
 nav li {
     display: contents;
 }
 
 nav {
+    --border-color: oklch(50% 10% 200 / 40%);
     display: flex;
     margin-bottom: 1em;
-    border-bottom: 1px solid oklch(80% 3% 200);
+    border-bottom: 1px solid var(--border-color);
 }
 
 nav a {
@@ -32,20 +33,31 @@ nav a {
 }
 
 nav a.current {
-    border-bottom: 0.4em solid oklch(80% 3% 200);
+    border-bottom: 0.4em solid var(--border-color);
     padding-bottom: 0.1em;
 }
 
 nav a:hover {
     border-bottom: 0.4em solid var(--color-accent);
     padding-bottom: 0.1em;
-    background-color: oklch(from var(--color-accent) 95% 5% h);
+    background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
 }
 
+.color-scheme {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 80%;
+}
+
+.color-scheme select {
+    font: inherit;
+}
 
 input,
 textarea,
-button {
+button,
+select {
     font: inherit;
 }
 
@@ -64,7 +76,6 @@ form label {
 form button {
     grid-column: 1 / -1;
 }
-
 
 .projects {
     display: grid;
@@ -86,7 +97,6 @@ form button {
     width: 100%;
 }
 
-
 h1 {
     font-size: 400%;
 }
@@ -101,9 +111,7 @@ h6 {
     text-wrap: balance;
 }
 
-/* STEP 5: Resume styling */
 
-/* Resume header */
 .resume-header {
     text-align: center;
     margin-bottom: 2em;
@@ -114,17 +122,16 @@ h6 {
 }
 
 .resume-header p {
-    color: #666;
+    color: color-mix(in oklch, canvastext, canvas 40%);
     font-size: 1.2em;
 }
 
-/* Resume sections */
 .resume-section {
     margin-bottom: 2em;
     padding: 1.5em;
-    border: 1px solid #ddd;
+    border: 1px solid color-mix(in oklch, canvastext, canvas 85%);
     border-radius: 10px;
-    background-color: #fafafa;
+    background-color: color-mix(in oklch, var(--color-accent), canvas 97%);
 }
 
 .resume-section h2 {
@@ -133,7 +140,6 @@ h6 {
     margin-top: 0;
 }
 
-/* Individual experience and project entries */
 .resume-section article {
     margin-bottom: 1.5em;
 }
@@ -150,7 +156,6 @@ h6 {
     margin-top: 0.4em;
 }
 
-/* Resume lists */
 .resume-section ul {
     padding-left: 1.5em;
 }
@@ -159,7 +164,6 @@ h6 {
     margin-bottom: 0.4em;
 }
 
-/* Skills */
 .skills-list {
     display: flex;
     flex-wrap: wrap;
@@ -169,12 +173,13 @@ h6 {
 }
 
 .skills-list li {
-    background-color: oklch(from var(--color-accent) 95% 5% h);
+    background-color: color-mix(in oklch, var(--color-accent), canvas 90%);
     border: 1px solid var(--color-accent);
     border-radius: 20px;
     padding: 0.4em 0.9em;
     margin: 0;
 }
+
 .dog-image {
     width: 720px;
     max-width: 100%;
