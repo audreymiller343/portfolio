@@ -186,3 +186,20 @@ h6 {
     height: auto;
     border-radius: 10px;
 }
+#profile-stats dl {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    text-align: center;
+}
+
+#profile-stats dt {
+    grid-row: 1;
+    font-weight: bold;
+}
+
+#profile-stats dd {
+    grid-row: 2;
+    margin: 0;
+    font-size: 1.5rem;
+}

@@ -1,0 +1,75 @@
+
+[
+  {
+    "title": "BioScope",
+    "year": "2026",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "An interactive biodiversity platform that simulates the ecological impact of species removal. Built with Next.js, TypeScript, Snowflake, and Google Gemini. Won 1st Place in UI/UX at DataHacks 2026."
+  },
+  {
+    "title": "Browser Eats",
+    "year": "2026",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "An AI-powered food delivery comparison application that uses parallel browser agents to compare prices across DoorDash, Uber Eats, and Grubhub. Built with Next.js, Playwright, browser automation, and Supabase."
+  },
+  {
+    "title": "TubeScope",
+    "year": "2026",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "An interactive data science application analyzing YouTube trending video lifespans using survival analysis and Kaplan-Meier estimators. Built with Python, pandas, and Streamlit."
+  },
+  {
+    "title": "PantryPal",
+    "year": "2026",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "A recipe recommendation application that uses image classification to recognize ingredients and suggest meals. Combines convolutional neural networks with the USDA FoodData Central API."
+  },
+  {
+    "title": "US Power Outage Analysis",
+    "year": "2026",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "An exploratory data analysis of major US power outages from 2000 to 2016, investigating outage severity, geographic patterns, population density, and underlying causes. Created using Python, pandas, and Plotly."
+  },
+  {
+    "title": "UCSD Lecture Attendance Analysis",
+    "year": "2026",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "A data science project exploring relationships between lecture attendance, student experiences, and academic performance at UC San Diego. Used Python, web scraping, pandas, and VADER sentiment analysis."
+  },
+  {
+    "title": "Weather Dashboard",
+    "year": "2024",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Placeholder project exploring weather patterns through interactive charts and visualizations."
+  },
+  {
+    "title": "Movie Recommendation System",
+    "year": "2025",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Placeholder project demonstrating a movie recommendation interface based on user preferences."
+  },
+  {
+    "title": "Fitness Activity Tracker",
+    "year": "2023",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Placeholder project displaying daily activity trends and fitness statistics."
+  },
+  {
+    "title": "Spotify Listening Analysis",
+    "year": "2024",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Placeholder project visualizing music listening habits, genres, and favorite artists."
+  },
+  {
+    "title": "Student Budget Planner",
+    "year": "2025",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Placeholder project demonstrating expense tracking and monthly budget summaries."
+  },
+  {
+    "title": "Travel Destination Explorer",
+    "year": "2023",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Placeholder project showcasing destination comparisons and travel-related data visualizations."
+  }
+]
