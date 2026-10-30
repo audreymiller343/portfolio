@@ -111,7 +111,6 @@ h6 {
     text-wrap: balance;
 }
 
-
 .resume-header {
     text-align: center;
     margin-bottom: 2em;
@@ -186,6 +185,7 @@ h6 {
     height: auto;
     border-radius: 10px;
 }
+
 #profile-stats dl {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -202,4 +202,83 @@ h6 {
     grid-row: 2;
     margin: 0;
     font-size: 1.5rem;
+}
+
+.project-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.project-info p {
+    margin: 0;
+}
+
+.project-year {
+    color: gray;
+    font-family: Baskerville, serif;
+    font-variant-numeric: oldstyle-nums;
+    font-style: italic;
+}
+
+#projects-pie-plot {
+    max-width: 20em;
+    margin-block: 2em;
+    overflow: visible;
+}
+
+.legend {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+    gap: 1em;
+    padding: 1em;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    list-style: none;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    cursor: pointer;
+}
+
+.swatch {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background-color: var(--color);
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.chart-container {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    flex-wrap: wrap;
+}
+
+.chart-container .legend {
+    flex: 1;
+    min-width: 200px;
+}
+
+#projects-pie-plot path {
+    transition: opacity 300ms;
+    cursor: pointer;
+}
+
+#projects-pie-plot:has(path:hover) path:not(:hover) {
+    opacity: 0.5;
+}
+
+#projects-pie-plot path.selected {
+    fill: #e83e8c;
+}
+
+.legend-item.selected {
+    --color: #e83e8c !important;
+    font-weight: bold;
 }
