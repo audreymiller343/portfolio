@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Analysis | My Portfolio</title>
+  <link rel="stylesheet" href="../style.css">
+  <script type="module" src="../global.js"></script>
+  <script type="module" src="main.js"></script>
+</head>
+<body>
+  <main>
+    <h1>Code Analysis</h1>
+    <p>
+      This page explores the development history of my portfolio
+      through interactive D3 visualizations.
+    </p>
+
+    <h2>Codebase Statistics</h2>
+    <div id="stats"></div>
+
+    <h2>Commits by Time of Day</h2>
+    <div id="chart"></div>
+
+    <p id="selection-count">No commits selected</p>
+
+    <h2>Programming Language Breakdown</h2>
+    <dl id="language-breakdown" class="stats"></dl>
+
+    <dl id="commit-tooltip" class="info tooltip" hidden>
+      <dt>Commit</dt>
+      <dd>
+        <a href="" id="commit-link" target="_blank"></a>
+      </dd>
+
+      <dt>Date</dt>
+      <dd id="commit-date"></dd>
+
+      <dt>Time</dt>
+      <dd id="commit-time"></dd>
+
+      <dt>Author</dt>
+      <dd id="commit-author"></dd>
+
+      <dt>Lines Edited</dt>
+      <dd id="commit-lines"></dd>
+    </dl>
+  </main>
+</body>
+</html>
