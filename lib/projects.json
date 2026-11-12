@@ -3,7 +3,7 @@
   {
     "title": "Pedal Patterns",
     "year": "2026",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "image": "/portfolio/images/pedal_patterns.png",
     "description": "An interactive map of bike traffic across Boston and Cambridge using D3.js, Mapbox GL JS, and JavaScript. Visualizes over 260,000 bike rides with time-based filtering, station activity, and color-coded arrival and departure patterns.",
     "url": "https://audreymiller343.github.io/pedal-patterns/"
   },
