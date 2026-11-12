@@ -90,7 +90,6 @@ select.addEventListener('input', function (event) {
   console.log('color scheme changed to', colorScheme);
 });
 
-
 let form = document.querySelector('form');
 
 form?.addEventListener('submit', function (event) {
@@ -108,6 +107,7 @@ form?.addEventListener('submit', function (event) {
 
   location.href = url;
 });
+
 export async function fetchJSON(url) {
   try {
     const response = await fetch(url);
@@ -124,6 +124,7 @@ export async function fetchJSON(url) {
     return null;
   }
 }
+
 export function renderProjects(projects, containerElement, headingLevel = 'h2') {
   if (!containerElement) {
     console.error('Projects container not found');
@@ -144,18 +145,39 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
   for (const project of projects) {
     const article = document.createElement('article');
 
-    article.innerHTML = `
-      <${headingLevel}>${project.title}</${headingLevel}>
-      <img src="${project.image}" alt="${project.title}">
-      <div class="project-info">
-        <p>${project.description}</p>
-        <p class="project-year">c. ${project.year}</p>
-      </div>
-    `;
+    const heading = document.createElement(headingLevel);
 
+    if (project.url) {
+      const link = document.createElement('a');
+      link.href = project.url;
+      link.textContent = project.title;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      heading.appendChild(link);
+    } else {
+      heading.textContent = project.title;
+    }
+
+    const image = document.createElement('img');
+    image.src = project.image;
+    image.alt = project.title;
+
+    const info = document.createElement('div');
+    info.className = 'project-info';
+
+    const description = document.createElement('p');
+    description.textContent = project.description;
+
+    const year = document.createElement('p');
+    year.className = 'project-year';
+    year.textContent = `c. ${project.year}`;
+
+    info.append(description, year);
+    article.append(heading, image, info);
     containerElement.appendChild(article);
   }
 }
+
 export async function fetchGitHubData(username) {
   return fetchJSON(`https://api.github.com/users/${username}`);
 }
