@@ -7,99 +7,107 @@
     <link rel="stylesheet" href="../style.css">
     <script type="module" src="../global.js"></script>
 </head>
-
 <body>
-
-
     <header class="resume-header">
         <h1>Audrey Miller</h1>
-        <p>Data Science Student at UC San Diego</p>
+        <p>
+            <a href="mailto:amm026@ucsd.edu">amm026@ucsd.edu</a> ·
+            <a href="tel:+18189669673">(818) 966-9673</a> ·
+            <a href="https://www.linkedin.com/in/audrey-miller-409a46386">LinkedIn</a>
+        </p>
+        <p>
+            <a href="https://github.com/audreymiller343">GitHub</a> ·
+            <a href="https://audreymiller343.github.io/portfolio/">Portfolio</a>
+        </p>
     </header>
 
     <section class="resume-section">
+        <h2>Summary</h2>
+        <p>UC San Diego Data Science student pursuing a Business Economics minor, with experience in statistical analysis, data visualization, and consumer pricing analytics. Skilled in Python, SQL, and pandas, with a focus on translating data into actionable business insights.</p>
+    </section>
+
+    <section class="resume-section">
         <h2>Education</h2>
-
         <article>
-            <h3>University of California, San Diego</h3>
-            <p>B.S. Data Science, Minor in Business Economics</p>
-            <p>Expected Graduation:
-                <time datetime="2028-06">June 2028</time>
-            </p>
-
-            <p>Relevant Coursework:</p>
-            <ul>
-                <li>Machine Learning</li>
-                <li>Data Structures and Algorithms</li>
-                <li>Probability and Statistics</li>
-                <li>Linear Algebra</li>
-                <li>Data Visualization</li>
-                <li>Computational Data Science</li>
-            </ul>
+            <h3>B.S. Data Science · Minor in Business Economics</h3>
+            <p>UC San Diego — Halıcıoğlu Data Science Institute</p>
+            <p>Expected <time datetime="2028-06">June 2028</time></p>
+            <p><strong>Relevant Coursework:</strong> Data Visualization, Machine Learning, Data Structures &amp; Algorithms, Computational Data Science, Probability &amp; Statistics</p>
         </article>
     </section>
 
     <section class="resume-section">
-        <h2>Experience</h2>
-
-        <article>
-            <h3>Coding &amp; STEM Instructor — Code Ninjas</h3>
-            <p>
-                <time datetime="2025-06">June 2025</time> –
-                <time datetime="2025-08">August 2025</time>
-            </p>
-
-            <ul>
-                <li>Taught coding and STEM concepts to students ages 4–10.</li>
-                <li>Worked with Python, HTML, JavaScript, and robotics.</li>
-                <li>Developed project-based lessons for more than 60 students.</li>
-            </ul>
-        </article>
-    </section>
-
-    <section class="resume-section">
-        <h2>Projects</h2>
-
-        <article>
-            <h3>BioScope</h3>
-            <p>
-                Biodiversity platform for exploring the effects of species
-                removal from ecosystems.
-            </p>
-            <ul>
-                <li>Built with Next.js, TypeScript, Snowflake, and Gemini.</li>
-                <li>Won 1st Place for UI/UX at DataHacks 2026.</li>
-            </ul>
-        </article>
-
-        <article>
-            <h3>TubeScope</h3>
-            <p>
-                Analyzed YouTube trending data using survival analysis and
-                Kaplan-Meier methods.
-            </p>
-        </article>
-
-        <article>
-            <h3>PantryPal</h3>
-            <p>
-                Recipe recommendation application incorporating ingredient
-                recognition and machine learning.
-            </p>
-        </article>
-    </section>
-
-    <section class="resume-section">
-        <h2>Skills</h2>
-
-        <ul class="skills-list">
-            <li>Python</li>
-            <li>SQL</li>
-            <li>Java</li>
-            <li>HTML &amp; JavaScript</li>
-            <li>pandas</li>
-            <li>Git &amp; GitHub</li>
+        <h2>Technical Skills</h2>
+        <ul>
+            <li><strong>Languages:</strong> Python, SQL, Java, TypeScript, JavaScript, HTML/CSS</li>
+            <li><strong>Libraries &amp; Frameworks:</strong> pandas, NumPy, scikit-learn, Plotly, Matplotlib, Next.js</li>
+            <li><strong>Tools &amp; Platforms:</strong> Snowflake, Spark SQL, Supabase, Git, Jupyter, Playwright, Excel</li>
+            <li><strong>Methods:</strong> Machine Learning, Statistical Analysis, Hypothesis Testing, Feature Engineering</li>
         </ul>
     </section>
 
+    <section class="resume-section">
+        <h2>Technical Projects</h2>
+        <article>
+            <h3><a href="https://audreymiller343.github.io/Power-Outage-Analysis/">Predictive Modeling of U.S. Power Outages</a></h3>
+            <p>Python · pandas · scikit-learn · Plotly | <time datetime="2026-02">Feb 2026</time></p>
+            <ul>
+                <li>Analyzed 1,534 major U.S. power outage records, performing data cleaning, feature engineering, exploratory analysis, and statistical hypothesis testing.</li>
+                <li>Built and optimized a Random Forest regression pipeline using 5-fold cross-validation and GridSearchCV, reducing test RMSE by 2.8% compared to a linear regression baseline.</li>
+                <li>Evaluated model performance across severe-weather and other outage categories using permutation testing, identifying differences in prediction error and assessing their statistical significance.</li>
+            </ul>
+        </article>
+        <article>
+            <h3><a href="https://devpost.com/software/bioscope">BioScope — Biodiversity Intelligence Platform</a></h3>
+            <p>Python · Spark SQL · Snowflake · Google Gemini 2.0 · Next.js</p>
+            <p><em>1st Place UI/UX · DataHacks 2026</em></p>
+            <ul>
+                <li>Collaborated on an AI-powered biodiversity platform analyzing 77,000+ observations across San Diego County using iNaturalist, GloBI, and Snowflake.</li>
+                <li>Contributed to data pipelines, ecosystem simulations, and keystone-species scoring across 8 ecosystem types, tracking 60 threatened species in 49 zones.</li>
+                <li>Helped integrate Gemini 2.0 conservation reports and interactive visualizations; awarded 1st Place UI/UX at DataHacks 2026.</li>
+            </ul>
+        </article>
+        <article>
+            <h3><a href="https://devpost.com/software/broke-bites">Broke Bites</a></h3>
+            <p>Playwright · Supabase · Python | <em>Diamond Hacks · 2026</em></p>
+            <ul>
+                <li>Built an AI-powered food delivery price comparison application using Python, Playwright, and Supabase caching to compare pricing across DoorDash, Uber Eats, and Grubhub.</li>
+                <li>Standardized pricing data from multiple platforms and resolved inconsistent API responses to improve data reliability and enable accurate comparisons.</li>
+            </ul>
+        </article>
+    </section>
+
+    <section class="resume-section">
+        <h2>Work Experience</h2>
+        <article>
+            <h3>Coding &amp; STEM Instructor | Code Ninjas Northridge</h3>
+            <p>Northridge, CA | <time datetime="2025-06">Jun</time> – <time datetime="2025-08">Aug 2025</time></p>
+            <ul>
+                <li>Taught Python, JavaScript, and HTML to 60+ students, adapting technical explanations to different skill levels.</li>
+                <li>Guided students through debugging and hands-on coding projects, strengthening analytical and problem-solving skills.</li>
+                <li>Collaborated with instructors to improve lessons, communicate student progress, and support student learning.</li>
+            </ul>
+        </article>
+        <article>
+            <h3>Front Desk / Host | Dave &amp; Buster’s Northridge</h3>
+            <p>Northridge, CA | <time datetime="2026-07">Jul</time> – <time datetime="2026-09">Sep 2026</time></p>
+            <ul>
+                <li>Coordinated guest flow, table availability, and wait times in a high-volume environment.</li>
+                <li>Managed transactions, inquiries, merchandise, and To Go orders accurately in a fast-paced setting.</li>
+            </ul>
+        </article>
+    </section>
+
+    <section class="resume-section">
+        <h2>Activities &amp; Leadership</h2>
+        <article>
+            <h3>Member | Women in Computing at UC San Diego</h3>
+            <p><time datetime="2024-09">Sep 2024</time> – Present</p>
+        </article>
+        <article>
+            <h3>Member | Data Science Student Society</h3>
+            <p><time datetime="2024-09">Sep 2024</time> – Present</p>
+        </article>
+    </section>
 </body>
 </html>
