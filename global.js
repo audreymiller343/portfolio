@@ -173,6 +173,16 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
     year.textContent = `c. ${project.year}`;
 
     info.append(description, year);
+
+    if (project.repo) {
+      const repoLink = document.createElement('a');
+      repoLink.href = project.repo;
+      repoLink.textContent = 'GitHub repository';
+      repoLink.target = '_blank';
+      repoLink.rel = 'noopener noreferrer';
+      info.appendChild(repoLink);
+    }
+
     article.append(heading, image, info);
     containerElement.appendChild(article);
   }
