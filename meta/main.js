@@ -1,5 +1,6 @@
 
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
+import scrollama from 'https://cdn.jsdelivr.net/npm/scrollama@3.2.0/+esm';
 
 async function loadData() {
   const data = await d3.csv('loc.csv', (row) => ({
@@ -41,7 +42,8 @@ function processCommits(data) {
       });
 
       return result;
-    });
+    })
+    .sort((a, b) => a.datetime - b.datetime);
 }
 
 function renderCommitInfo(data, commits) {
@@ -81,7 +83,7 @@ function renderTooltipContent(commit) {
 
   const link = document.getElementById('commit-link');
   const date = document.getElementById('commit-date');
-  const time = document.getElementById('commit-time');
+  const time = document.getElementById('tooltip-time');
   const author = document.getElementById('commit-author');
   const lines = document.getElementById('commit-lines');
 
@@ -169,7 +171,7 @@ function renderLanguageBreakdown(selectedCommits) {
   }
 }
 
-function renderScatterPlot(data, commits) {
+function renderScatterPlot(commits) {
   const width = 1000;
   const height = 600;
 
@@ -217,21 +219,6 @@ function renderScatterPlot(data, commits) {
       .tickSize(-usableArea.width)
   );
 
-  const [minLines, maxLines] = d3.extent(
-    commits,
-    (d) => d.totalLines
-  );
-
-  const rScale = d3
-    .scaleSqrt()
-    .domain([minLines, maxLines])
-    .range([2, 30]);
-
-  const sortedCommits = d3.sort(
-    commits,
-    (d) => -d.totalLines
-  );
-
   const brushLayer = svg
     .append('g')
     .attr('class', 'brush');
@@ -240,46 +227,20 @@ function renderScatterPlot(data, commits) {
     .append('g')
     .attr('class', 'dots');
 
-  dots
-    .selectAll('circle')
-    .data(sortedCommits)
-    .join('circle')
-    .attr('cx', (d) => xScale(d.datetime))
-    .attr('cy', (d) => yScale(d.hourFrac))
-    .attr('r', (d) => rScale(d.totalLines))
-    .attr('fill', 'steelblue')
-    .style('fill-opacity', 0.7)
-    .on('mouseenter', (event, commit) => {
-      d3.select(event.currentTarget)
-        .style('fill-opacity', 1);
-
-      renderTooltipContent(commit);
-      updateTooltipVisibility(true);
-      updateTooltipPosition(event);
-    })
-    .on('mousemove', (event) => {
-      updateTooltipPosition(event);
-    })
-    .on('mouseleave', (event) => {
-      d3.select(event.currentTarget)
-        .style('fill-opacity', 0.7);
-
-      updateTooltipVisibility(false);
-    });
-
   const xAxis = d3.axisBottom(xScale);
 
   const yAxis = d3
     .axisLeft(yScale)
     .tickFormat((d) => String(d % 24).padStart(2, '0') + ':00');
 
-  svg
+  const xAxisGroup = svg
     .append('g')
-    .attr('transform', `translate(0, ${usableArea.bottom})`)
-    .call(xAxis);
+    .attr('class', 'x-axis')
+    .attr('transform', `translate(0, ${usableArea.bottom})`);
 
   svg
     .append('g')
+    .attr('class', 'y-axis')
     .attr('transform', `translate(${usableArea.left}, 0)`)
     .call(yAxis);
 
@@ -295,11 +256,13 @@ function renderScatterPlot(data, commits) {
     return x >= x0 && x <= x1 && y >= y0 && y <= y1;
   }
 
+  let visibleCommits = commits;
+
   function brushed(event) {
     const selection = event.selection;
 
     const selectedCommits = selection
-      ? commits.filter((commit) =>
+      ? visibleCommits.filter((commit) =>
           isCommitSelected(selection, commit)
         )
       : [];
@@ -326,10 +289,178 @@ function renderScatterPlot(data, commits) {
 
   brushLayer.lower();
   dots.raise();
+
+  function updateScatterPlot(filteredCommits) {
+    visibleCommits = filteredCommits;
+    xScale.domain(d3.extent(filteredCommits, (d) => d.datetime)).nice();
+    xAxisGroup.call(xAxis);
+
+    const rScale = d3.scaleSqrt()
+      .domain(d3.extent(filteredCommits, (d) => d.totalLines))
+      .range([2, 30]);
+    const sortedCommits = d3.sort(filteredCommits, (d) => -d.totalLines);
+
+    updateTooltipVisibility(false);
+    dots
+      .selectAll('circle')
+      .data(sortedCommits, (d) => d.id)
+      .join('circle')
+      .classed('current', (commit) => commit === filteredCommits.at(-1))
+      .attr('cx', (d) => xScale(d.datetime))
+      .attr('cy', (d) => yScale(d.hourFrac))
+      .attr('r', (d) => rScale(d.totalLines))
+      .attr('fill', 'steelblue')
+      .style('fill-opacity', 0.7)
+      .on('mouseenter', (event, commit) => {
+        d3.select(event.currentTarget)
+          .style('fill-opacity', 1);
+
+        renderTooltipContent(commit);
+        updateTooltipVisibility(true);
+        updateTooltipPosition(event);
+      })
+      .on('mousemove', (event) => {
+        updateTooltipPosition(event);
+      })
+      .on('mouseleave', (event) => {
+        d3.select(event.currentTarget)
+          .style('fill-opacity', 0.7);
+
+        updateTooltipVisibility(false);
+      });
+
+    brushed({ selection: d3.brushSelection(brushLayer.node()) });
+  }
+
+  return updateScatterPlot;
 }
 
-let data = await loadData();
-let commits = processCommits(data);
+const colors = d3.scaleOrdinal(d3.schemeTableau10);
 
+function updateFileDisplay(filteredCommits) {
+  const lines = filteredCommits.flatMap((commit) => commit.lines);
+  const files = d3.groups(lines, (line) => line.file)
+    .map(([name, lines]) => ({ name, lines }))
+    .sort((a, b) => b.lines.length - a.lines.length);
+
+  const rows = d3.select('#files')
+    .selectChildren('div')
+    .data(files, (file) => file.name)
+    .join((enter) => enter.append('div').call((row) => {
+      const label = row.append('dt');
+      label.append('code');
+      label.append('small');
+      row.append('dd');
+    }));
+
+  rows.select('code').text((file) => file.name);
+  rows.select('small').text((file) => `${file.lines.length} lines`);
+  rows.select('dd')
+    .selectAll('div')
+    .data((file) => file.lines)
+    .join('div')
+    .attr('class', 'loc')
+    .classed('current', (line) => line.commit === filteredCommits.at(-1)?.id)
+    .style('--color', (line) => colors(line.type));
+}
+
+const data = await loadData();
+const commits = processCommits(data);
 renderCommitInfo(data, commits);
-renderScatterPlot(data, commits);
+const updateScatterPlot = renderScatterPlot(commits);
+
+let commitProgress = 100;
+const timeScale = d3.scaleTime()
+  .domain(d3.extent(commits, (commit) => commit.datetime))
+  .range([0, 100]);
+let commitMaxTime = timeScale.invert(commitProgress);
+const slider = document.getElementById('commit-progress');
+const cutoff = document.getElementById('commit-time');
+const playButton = document.getElementById('play-history');
+let playbackTimer;
+
+function stopPlayback() {
+  clearInterval(playbackTimer);
+  playbackTimer = undefined;
+  playButton.textContent = 'Play';
+}
+
+function updateCommitFilter() {
+  cutoff.dateTime = commitMaxTime.toISOString();
+  cutoff.textContent = commitMaxTime.toLocaleString('en', {
+    dateStyle: 'long',
+    timeStyle: 'short',
+  });
+
+  const filteredCommits = commits.filter((commit) => commit.datetime <= commitMaxTime);
+  updateScatterPlot(filteredCommits);
+  updateFileDisplay(filteredCommits);
+}
+
+function onTimeSliderChange() {
+  stopPlayback();
+  commitProgress = slider.valueAsNumber;
+  commitMaxTime = timeScale.invert(commitProgress);
+  updateCommitFilter();
+}
+
+slider.addEventListener('input', onTimeSliderChange);
+onTimeSliderChange();
+
+d3.select('#scatter-story')
+  .selectAll('.step')
+  .data(commits)
+  .join('div')
+  .attr('class', 'step')
+  .html((commit, index) => {
+    const date = commit.datetime.toLocaleString('en', {
+      dateStyle: 'full',
+      timeStyle: 'short',
+    });
+    const fileCount = d3.group(commit.lines, (line) => line.file).size;
+    const linkText = index === 0 ? 'my first recorded commit' : 'another commit';
+    return `<p>On ${date}, I made <a href="${commit.url}" target="_blank">${linkText}</a>.</p>
+      <p>I edited <strong>${commit.totalLines}</strong> lines across
+      <strong>${fileCount}</strong> ${fileCount === 1 ? 'file' : 'files'}.</p>`;
+  });
+
+function showCommit(commit) {
+  commitMaxTime = commit.datetime;
+  commitProgress = timeScale(commitMaxTime);
+  slider.value = commitProgress;
+  updateCommitFilter();
+}
+
+playButton.addEventListener('click', () => {
+  if (playbackTimer !== undefined) {
+    stopPlayback();
+    return;
+  }
+
+  let index = 0;
+  playButton.textContent = 'Pause';
+  showCommit(commits[index]);
+  if (commits.length === 1) {
+    stopPlayback();
+    return;
+  }
+
+  playbackTimer = setInterval(() => {
+    showCommit(commits[++index]);
+    if (index === commits.length - 1) {
+      stopPlayback();
+    }
+  }, 750);
+});
+
+function onStepEnter({ element }) {
+  stopPlayback();
+  showCommit(element.__data__);
+}
+
+scrollama()
+  .setup({
+    container: '#scrolly-1',
+    step: '#scrolly-1 .step',
+  })
+  .onStepEnter(onStepEnter);

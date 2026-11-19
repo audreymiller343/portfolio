@@ -9,24 +9,31 @@
   <script type="module" src="../global.js"></script>
   <script type="module" src="main.js"></script>
 </head>
-<body>
+<body class="meta-page">
   <main>
-    <h1>Code Analysis</h1>
-    <p>
-      This page explores the development history of my portfolio
-      through interactive D3 visualizations.
-    </p>
+    <h1>Meta</h1>
+    <p>Explore the Git history behind this portfolio. Scroll through the commits, drag the timeline, or play it from the beginning.</p>
 
-    <h2>Codebase Statistics</h2>
+    <h2>Summary</h2>
     <div id="stats"></div>
 
-    <h2>Commits by Time of Day</h2>
-    <div id="chart"></div>
+    <h2>How the portfolio grew</h2>
+    <div id="scrolly-1">
+      <div id="scatter-story"></div>
+      <div id="scatter-plot">
+        <div id="commit-filter">
+          <button id="play-history" type="button">Play</button>
+          <label for="commit-progress">Show commits until</label>
+          <input type="range" id="commit-progress" min="0" max="100" value="100" step="any">
+          <time id="commit-time"></time>
+        </div>
+        <div id="chart"></div>
 
-    <p id="selection-count">No commits selected</p>
+        <p id="selection-count">No commits selected</p>
 
-    <h2>Programming Language Breakdown</h2>
-    <dl id="language-breakdown" class="stats"></dl>
+        <dl id="language-breakdown" class="stats"></dl>
+      </div>
+    </div>
 
     <dl id="commit-tooltip" class="info tooltip" hidden>
       <dt>Commit</dt>
@@ -38,7 +45,7 @@
       <dd id="commit-date"></dd>
 
       <dt>Time</dt>
-      <dd id="commit-time"></dd>
+      <dd id="tooltip-time"></dd>
 
       <dt>Author</dt>
       <dd id="commit-author"></dd>
@@ -46,6 +53,11 @@
       <dt>Lines Edited</dt>
       <dd id="commit-lines"></dd>
     </dl>
+    <section aria-labelledby="file-heading">
+      <h2 id="file-heading">Files by size</h2>
+      <p class="files-note">Each dot represents a line of code. Colors show the language, and outlined dots mark the latest visible commit.</p>
+      <dl id="files"></dl>
+    </section>
   </main>
 </body>
 </html>
