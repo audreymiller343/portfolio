@@ -440,20 +440,22 @@ dl.info dd {
 }
 
 #commit-filter {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    align-items: center;
     gap: 0.5rem 0.75rem;
     margin-bottom: 1rem;
 }
 
 #commit-filter input {
-    flex: 1;
-    min-width: 8rem;
+    grid-column: 1 / -1;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
 }
 
 #commit-filter time {
-    margin-left: auto;
+    grid-column: 1 / -1;
     font-variant-numeric: tabular-nums;
 }
 
