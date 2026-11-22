@@ -3,30 +3,30 @@
   {
     "title": "US Power Outage Analysis",
     "year": "2026",
-    "image": "/portfolio/images/power_outage.png",
+    "image": "../images/power_outage.png",
     "url": "https://audreymiller343.github.io/Power-Outage-Analysis/",
     "description": "An exploratory data analysis of major US power outages from 2000 to 2016, investigating outage severity, geographic patterns, population density, and underlying causes. Created using Python, pandas, and Plotly."
   },
   {
     "title": "Pedal Patterns",
     "year": "2026",
-    "image": "/portfolio/images/pedal_patterns.png",
+    "image": "../images/pedal_patterns.png",
     "description": "An interactive map of bike traffic across Boston and Cambridge using D3.js, Mapbox GL JS, and JavaScript. Visualizes over 260,000 bike rides with time-based filtering, station activity, and color-coded arrival and departure patterns.",
     "url": "https://audreymiller343.github.io/pedal-patterns/"
   },
   {
     "title": "BioScope",
     "year": "2026",
-    "image": "/portfolio/images/bioscope.png",
-    "url": "https://devpost.com/software/bioscope",
+    "image": "../images/bioscope.png",
+    "url": "./bioscope/",
     "repo": "https://github.com/Allghelierce/Bioscope",
     "description": "An interactive biodiversity platform that simulates the ecological impact of species removal. Built with Next.js, TypeScript, Snowflake, and Google Gemini. Won 1st Place in UI/UX at DataHacks 2026."
   },
   {
-    "title": "Broke Bits",
+    "title": "Broke Bites",
     "year": "2026",
-    "image": "/portfolio/images/broke_bites.png",
-    "url": "https://devpost.com/software/broke-bites",
+    "image": "../images/broke_bites.png",
+    "url": "./broke-bites/",
     "repo": "https://github.com/ahp002/DiamondHacks-2026",
     "description": "An AI-powered food delivery comparison application that uses parallel browser agents to compare prices across DoorDash, Uber Eats, and Grubhub. Built with Next.js, Playwright, browser automation, and Supabase."
   },

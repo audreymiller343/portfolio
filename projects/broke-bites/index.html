@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Broke Bites | Audrey Miller</title>
+    <link rel="stylesheet" href="../../style.css">
+    <script type="module" src="../../global.js"></script>
+</head>
+<body class="portfolio-page">
+    <main class="case-study">
+        <a href="../../">Back to portfolio</a>
+        <header>
+            <h1>Broke Bites</h1>
+            <p>One search for estimated delivery prices across three apps.</p>
+        </header>
+        <figure class="case-figure">
+            <img src="../../images/broke_bites.png" width="3023" height="1562" alt="Broke Bites showing Grubhub at $16.20, DoorDash at $17.54, and Uber Eats at $36.52">
+            <figcaption>In this example, the green outline marks the lowest estimate. Each card puts the estimated total first, with delivery and service fees underneath.</figcaption>
+        </figure>
+        <ul class="portfolio-links">
+            <li><a href="#demo">Watch the demo</a></li>
+            <li><a href="https://devpost.com/software/broke-bites">View the Devpost submission</a></li>
+        </ul>
+
+        <section>
+            <h2>Problem and customer</h2>
+            <p>Budget-conscious diners have to repeat the same search across delivery apps to find the lowest total. With service and delivery fees shown in different places, comparing the real cost of an order takes extra work.</p>
+        </section>
+        <section>
+            <h2>Early ideas</h2>
+            <p>We worked from the separate searches a diner would make in DoorDash, Uber Eats, and Grubhub. We tried running the searches sequentially and then switched to querying the three platforms in parallel so one slow service wouldn't hold up the others.</p>
+        </section>
+        <section>
+            <h2>Design decisions</h2>
+            <ul>
+                <li>We looked at the cost breakdown each app presents and chose to lead with the estimated total, because that's the first number someone needs to compare. We kept delivery and service fees visible underneath.</li>
+                <li>We tried a thin green border on the lowest-price card, then chose a thicker border and kept the lowest-price label so diners could spot the cheapest estimate and still compare the other offers.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Validation</h2>
+            <p>While building the prototype, we found that providers returned inconsistent pricing data. We standardized the fields so the cards could show comparable totals and fees. The project materials do not document formal user testing.</p>
+        </section>
+        <section>
+            <h2>Final design</h2>
+            <figure class="case-figure" id="demo">
+                <video controls playsinline preload="none" poster="../../images/broke_bites-preview.webp" aria-label="Broke Bites demo showing the search and price comparison">
+                    <source src="demo.mp4" type="video/mp4">
+                    <a href="demo.mp4">Download the Broke Bites demo</a>
+                </video>
+            </figure>
+            <p>Enter a delivery location and a restaurant or food query, then select <strong>Compare prices</strong>. The results show the estimated savings and each app's total. The fee breakdown helps explain the price difference, and the checkout reminder tells diners to confirm the final total before ordering.</p>
+        </section>
+        <section>
+            <h2>Outcome and next steps</h2>
+            <p>We built and submitted a working prototype at DiamondHacks 2026. Next, I'd ask diners to compare a real order using the prototype and their usual apps, then check whether they spot the cheapest estimate and understand why the checkout total may change.</p>
+        </section>
+    </main>
+</body>
+</html>

@@ -576,3 +576,180 @@ dl.info dd {
         background: Canvas;
     }
 }
+
+.portfolio-page {
+    --portfolio-line: color-mix(in oklch, CanvasText 18%, Canvas);
+    --portfolio-muted: color-mix(in oklch, CanvasText 72%, Canvas);
+    max-width: 68rem;
+    padding-inline: clamp(1rem, 4vw, 2.5rem);
+}
+
+.portfolio-page > nav {
+    flex-wrap: wrap;
+}
+
+.portfolio-page > .color-scheme {
+    display: block;
+    position: static;
+    text-align: right;
+}
+
+.portfolio-page h1 {
+    margin: 0 0 0.75rem;
+    font-size: clamp(2.75rem, 8vw, 5rem);
+    letter-spacing: -0.055em;
+}
+
+.portfolio-page h2 {
+    margin: 0 0 0.85rem;
+}
+
+.portfolio-page p {
+    max-width: 65ch;
+}
+
+.portfolio-intro {
+    padding-block: clamp(2.25rem, 6vw, 5rem);
+}
+
+.portfolio-intro p,
+.case-study header p {
+    margin: 0 0 1.5rem;
+    font-size: clamp(1.125rem, 2vw, 1.35rem);
+}
+
+.resume-button {
+    display: inline-block;
+    border-radius: 0.5rem;
+    padding: 0.65rem 1rem;
+    background: CanvasText;
+    color: Canvas;
+    font-weight: 650;
+    text-decoration: none;
+}
+
+.resume-button:hover,
+.case-card:hover h3 {
+    text-decoration: underline;
+}
+
+.featured-work,
+.portfolio-footer {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1rem, 3vw, 2rem);
+}
+
+.case-card {
+    display: block;
+    height: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--portfolio-line);
+    border-radius: 0.85rem;
+    overflow: hidden;
+    color: inherit;
+    text-decoration: none;
+}
+
+.case-card img,
+.case-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.case-card img {
+    aspect-ratio: 2 / 1;
+    object-fit: cover;
+}
+
+.case-card div {
+    padding: 1.2rem;
+}
+
+.case-card h3 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.case-card p {
+    margin: 0.55rem 0 0;
+}
+
+.case-context,
+.case-figure figcaption {
+    color: var(--portfolio-muted);
+    font-size: 0.9rem;
+}
+
+.portfolio-intro ~ section + section,
+.portfolio-footer,
+.case-study section {
+    border-top: 1px solid var(--portfolio-line);
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+}
+
+.portfolio-footer,
+.case-study {
+    padding-bottom: 2rem;
+}
+
+.portfolio-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 1.25rem;
+    padding: 0;
+    list-style: none;
+}
+
+.case-study header {
+    margin-top: 1.5rem;
+}
+
+.case-figure {
+    margin: 0;
+}
+
+.case-figure img {
+    border-radius: 0.85rem;
+    border: 1px solid var(--portfolio-line);
+    box-sizing: border-box;
+}
+
+.case-figure figcaption {
+    margin-top: 0.65rem;
+}
+
+.case-study section ul {
+    max-width: 65ch;
+    padding-left: 1.25rem;
+}
+
+.case-study section li + li {
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 650px) {
+    .featured-work,
+    .portfolio-footer {
+        grid-template-columns: 1fr;
+    }
+}
+
+.about-photo {
+    float: left;
+    width: 5rem;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center 35%;
+    border-radius: 50%;
+    margin-inline-end: 1rem;
+}
+
+.case-figure video {
+    display: block;
+    width: 100%;
+    max-width: 52rem;
+    border-radius: 0.85rem;
+}

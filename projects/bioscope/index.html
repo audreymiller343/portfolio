@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioScope | Audrey Miller</title>
+    <link rel="stylesheet" href="../../style.css">
+    <script type="module" src="../../global.js"></script>
+</head>
+<body class="portfolio-page">
+    <main class="case-study">
+        <a href="../../">Back to portfolio</a>
+        <header>
+            <h1>BioScope</h1>
+            <p>Making the ripple effects of species loss visible in San Diego.</p>
+        </header>
+        <figure class="case-figure">
+            <img src="../../images/bioscope.png" width="3420" height="1662" alt="BioScope food web with species grouped by ecological role and the San Diego alligator lizard selected">
+            <figcaption>The food web groups species by ecological role. Selecting the alligator lizard opens a panel with its role, observations, and a control to simulate its removal.</figcaption>
+        </figure>
+        <ul class="portfolio-links">
+            <li><a href="#demo">Watch the demo</a></li>
+            <li><a href="https://www.youtube.com/watch?v=R6QAX09ipwc">Watch the full demo on YouTube</a></li>
+            <li><a href="https://devpost.com/software/bioscope">View the Devpost submission and award</a></li>
+        </ul>
+
+        <section>
+            <h2>Problem and customer</h2>
+            <p>San Diego residents and conservation learners can find lists of local species, but those lists make it hard to see which other species might be affected if one disappears. BioScope lets them explore that question in a neighborhood or park they know.</p>
+        </section>
+        <section>
+            <h2>Early ideas</h2>
+            <p>We first tried connecting species with randomly generated links. The links produced implausible feeding relationships, so we dropped them and built rules for which ecological groups could feed on one another.</p>
+        </section>
+        <section>
+            <h2>Design decisions</h2>
+            <ul>
+                <li>We tried random links and chose directional feeding rules because a removal simulation depends on plausible relationships between predators and prey.</li>
+                <li>We started with the question a list of endangered species leaves open and chose an interactive food web with a removal control so people could trace the downstream effects from one species.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Validation</h2>
+            <p>During development, we inspected the generated food web and found that some links made little ecological sense. We revised the graph to apply feeding rules by ecological role. The hackathon submission does not document formal user testing.</p>
+        </section>
+        <section>
+            <h2>Final design</h2>
+            <figure class="case-figure" id="demo">
+                <video controls playsinline preload="none" poster="../../images/bioscope-preview.webp" aria-label="BioScope demo showing the food web and species details">
+                    <source src="demo.mp4" type="video/mp4">
+                    <a href="demo.mp4">Download the BioScope demo</a>
+                </video>
+                <figcaption>28-second walkthrough of the food web, showing how to inspect a species and find the removal controls.</figcaption>
+            </figure>
+            <p>Start by searching for a neighborhood or park. In the food web, select a species to see its role and connections. Use <strong>Simulate Removal</strong> to explore the effects on the rest of the web.</p>
+        </section>
+        <section>
+            <h2>Outcome and next steps</h2>
+            <p>BioScope won 1st Place UI/UX at DataHacks 2026. Next, I'd watch first-time users run a removal and ask them to explain which species are affected and why. I'd use their answers to improve the graph legend and explain where the model is uncertain.</p>
+        </section>
+    </main>
+</body>
+</html>

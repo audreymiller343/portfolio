@@ -3,24 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audrey Miller: Personal site and portfolio</title>
+    <title>Audrey Miller | Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <script type="module" src="global.js"></script>
-    <script src="index.js" type="module"></script>
 </head>
-<body>
+<body class="portfolio-page">
+    <main>
+        <header class="portfolio-intro">
+            <h1>Audrey Miller</h1>
+            <p>I'm a data science student at UC San Diego who designs and builds interactive prototypes that make complex information easy to use. I won 1st Place UI/UX at DataHacks 2026 for BioScope, a biodiversity platform for San Diego.</p>
+            <a class="resume-button" href="resume/audrey-miller-resume.pdf" download>Download resume</a>
+        </header>
 
+        <section aria-labelledby="featured-heading">
+            <h2 id="featured-heading">Featured case studies</h2>
+            <div class="featured-work">
+                <article>
+                    <a class="case-card" href="projects/bioscope/">
+                        <img src="images/bioscope-preview.webp" width="1100" height="535" alt="BioScope food-web graph with the San Diego alligator lizard selected">
+                        <div>
+                            <h3>BioScope</h3>
+                            <p>Explore what happens to a San Diego food web when a species disappears.</p>
+                            <p class="case-context">1st Place UI/UX · DataHacks 2026</p>
+                        </div>
+                    </a>
+                </article>
+                <article>
+                    <a class="case-card" href="projects/broke-bites/">
+                        <img src="images/broke_bites-preview.webp" width="1100" height="568" alt="Broke Bites price comparison highlighting the lowest estimate across three delivery apps">
+                        <div>
+                            <h3>Broke Bites</h3>
+                            <p>Compare estimated food delivery totals and fees across three apps in one search.</p>
+                            <p class="case-context">DiamondHacks 2026</p>
+                        </div>
+                    </a>
+                </article>
+            </div>
+        </section>
 
-    <h1>Audrey Miller</h1>
-    <p>I'm a Data Science student at UC San Diego interested in machine learning,
-        software engineering, and building data-driven applications.</p>
+        <section aria-labelledby="other-heading">
+            <h2 id="other-heading">Other projects</h2>
+            <h3><a href="https://audreymiller343.github.io/Power-Outage-Analysis/">U.S. Power Outage Analysis</a></h3>
+            <p>An interactive analysis of the causes, severity, and geographic patterns of major U.S. power outages.</p>
+        </section>
 
-    <img class="dog-image" src="images/me.png" alt="Audrey Miller">
-    <h2>Latest Projects</h2>
-
-    <div class="projects"></div>
-    <h2>My GitHub Stats</h2>
-
-    <div id="profile-stats"></div>
+        <footer class="portfolio-footer">
+            <section aria-labelledby="about-heading">
+                <h2 id="about-heading">About</h2>
+                <img class="about-photo" src="images/me.png" alt="Audrey Miller" loading="lazy">
+                <p>I'm studying data science and minoring in business economics at UC San Diego. I enjoy turning messy data into interactive tools that help people explore a question or make a decision.</p>
+            </section>
+            <section aria-labelledby="contact-heading">
+                <h2 id="contact-heading">Contact</h2>
+                <ul class="portfolio-links">
+                    <li><a href="mailto:amm026@ucsd.edu">amm026@ucsd.edu</a></li>
+                    <li><a href="https://www.linkedin.com/in/audrey-miller-409a46386">LinkedIn</a></li>
+                </ul>
+            </section>
+        </footer>
+    </main>
 </body>
 </html>
