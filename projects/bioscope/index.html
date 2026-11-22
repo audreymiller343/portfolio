@@ -45,13 +45,15 @@
         </section>
         <section>
             <h2>Final design</h2>
-            <figure class="case-figure" id="demo">
-                <video controls playsinline preload="none" poster="../../images/bioscope-preview.webp" aria-label="BioScope demo showing the food web and species details">
-                    <source src="demo.mp4" type="video/mp4">
-                    <a href="demo.mp4">Download the BioScope demo</a>
-                </video>
-                <figcaption>28-second walkthrough of the food web, showing how to inspect a species and find the removal controls.</figcaption>
-            </figure>
+            <div id="demo">
+                <iframe class="case-demo"
+                    src="https://www.youtube.com/embed/R6QAX09ipwc?playsinline=1"
+                    title="BioScope project demo"
+                    loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allow="encrypted-media; picture-in-picture; fullscreen"
+                    allowfullscreen></iframe>
+            </div>
             <p>Start by searching for a neighborhood or park. In the food web, select a species to see its role and connections. Use <strong>Simulate Removal</strong> to explore the effects on the rest of the web.</p>
         </section>
         <section>

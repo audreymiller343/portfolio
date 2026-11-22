@@ -747,9 +747,15 @@ dl.info dd {
     margin-inline-end: 1rem;
 }
 
-.case-figure video {
+.case-figure video,
+.case-demo {
     display: block;
     width: 100%;
     max-width: 52rem;
     border-radius: 0.85rem;
+}
+
+.case-demo {
+    aspect-ratio: 16 / 9;
+    border: 0;
 }
